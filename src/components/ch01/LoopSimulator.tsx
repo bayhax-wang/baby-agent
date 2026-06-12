@@ -153,7 +153,7 @@ export default function LoopSimulator({ locale }: { locale: Locale }) {
   return (
     <>
       <div className="sim-grid">
-        <div className="panel">
+        <div className="panel screen">
           <div className="panel-head">
             <span className="dot r" /><span className="dot y" /><span className="dot g" />
             &nbsp;agent.py · agent_loop()

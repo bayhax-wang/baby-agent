@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Anatomy · 把 Claude Code 拆开看",
+  title: "Baby Agent · 从一行循环养大一个 AI",
   description:
-    "An interactive, bilingual course that dissects how Claude Code works — by rebuilding its mechanisms one chapter at a time. 交互式双语教程：亲手重建 Claude Code 的每一个机制。",
+    "A cheerful, interactive, bilingual course where you raise an AI coding agent from scratch — it grows one new ability per chapter. 一个欢快的交互式双语教程：从零养大一只小 Agent，每章学会一项新本领。",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

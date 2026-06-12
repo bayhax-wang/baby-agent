@@ -64,23 +64,28 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <div className="hero">
         <div className="hero-split">
           <div>
-            <div className="hero-kicker">{zh ? "第 1 章 / 共 20 章 · 心脏科" : "CHAPTER 1 / 20 · CARDIOLOGY"}</div>
+            <div className="hero-kicker">{zh ? "第 1 章 / 共 20 章 · 苏醒" : "CHAPTER 1 / 20 · WAKING UP"}</div>
             <h1 className="hero-title">
-              {zh ? <>心跳<br />一个循环就是一条命</> : <>The Heartbeat<br />One Loop Is a Life</>}
+              {zh ? <>苏醒 🐣<br />给它一次心跳</> : <>Wake Up 🐣<br />Give It a Heartbeat</>}
             </h1>
             <p className="hero-sub">
               {zh ? (
-                <>大模型天生是<b>截瘫的天才</b>：想得出命令，却动不了手，也看不见结果。给它接上一个 <code>while True</code>——它就活了。</>
+                <>刚破壳的小 Agent 只是个<b>会做梦的脑袋</b>：想得出命令，却动不了手、看不见结果。给它接上一个 <code>while True</code>——它就<b>睁眼活过来了</b>。</>
               ) : (
-                <>An LLM is born a <b>paralyzed genius</b>: it can think up commands but can&apos;t move a finger or see what happens. Wire it to a <code>while True</code> — and it comes alive.</>
+                <>A freshly hatched baby agent is just a <b>dreaming head</b>: it can think up commands but can&apos;t lift a finger or see what happens. Wire it to a <code>while True</code> — and it <b>opens its eyes</b>.</>
               )}
             </p>
-            <p className="hero-quote">{zh ? "// 智能在模型里，生命在循环里" : "// intelligence lives in the model; life lives in the loop"}</p>
+            <p className="hero-quote">{zh ? "// 聪明在模型里，生命在循环里 ✨" : "// the smarts live in the model; the life lives in the loop ✨"}</p>
             <a href="#act1" className="hero-cta">
-              {zh ? "先亲手体验没有循环的痛苦 ↓" : "First, feel the pain of life without the loop ↓"}
+              {zh ? "先帮它当一回手脚 🙌 ↓" : "First, be its hands & feet 🙌 ↓"}
             </a>
           </div>
-          <Hero3D locale={l} />
+          <div className="hero-canvas-wrap" style={{ position: "relative" }}>
+            <span className="hero-spark" style={{ left: "-6%", top: "8%", animationDelay: "0s" }}>✨</span>
+            <span className="hero-spark" style={{ right: "-4%", top: "70%", animationDelay: "-2s" }}>💫</span>
+            <span className="hero-spark" style={{ left: "8%", bottom: "-6%", animationDelay: "-3.5s" }}>⭐</span>
+            <Hero3D locale={l} />
+          </div>
         </div>
       </div>
 
@@ -88,17 +93,17 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="act1">
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第一幕 · 发病现场" : "ACT 1 · THE SYMPTOM"}</div>
-            <h2>{zh ? "你来当人肉心脏 🫀" : "You Be the Human Heart 🫀"}</h2>
+            <div className="act-tag">{zh ? "第一幕 · 手忙脚乱 🙌" : "ACT 1 · ALL THUMBS 🙌"}</div>
+            <h2>{zh ? "你来当它的手脚" : "You Be Its Hands & Feet"}</h2>
             <p className="lede">
               {zh ? (
-                <>你对模型说：<strong>「创建一个 hello.py 并运行它」</strong>。它聪明地吐出第一条命令——然后就<strong>停了</strong>。
-                  接下来每一步都得你来泵血：<strong>亲手在右边的终端里把命令敲出来</strong>（真的可以打字），再把输出搬回对话框。
-                  数着自己搬了几次。</>
+                <>你对小 Agent 说：<strong>「创建一个 hello.py 并运行它」</strong>。它聪明地吐出第一条命令——然后就<strong>卡住了</strong>，它还没长出手。
+                  接下来每一步都得你帮忙：<strong>亲手在右边的终端里把命令敲出来</strong>（真的可以打字），再把输出搬回对话框。
+                  数数看你帮它跑了几趟腿。</>
               ) : (
-                <>You tell the model: <strong>&quot;create a hello.py and run it&quot;</strong>. It smartly emits the first command — then <strong>stops dead</strong>.
-                  From here every beat is on you: <strong>type the command into the terminal on the right yourself</strong> (it really types), then carry the output back to the chat.
-                  Count your trips.</>
+                <>You tell the baby agent: <strong>&quot;create a hello.py and run it&quot;</strong>. It cleverly emits the first command — then <strong>freezes</strong>; it hasn&apos;t grown hands yet.
+                  From here every step is on you: <strong>type the command into the terminal on the right yourself</strong> (it really types), then carry the output back to the chat.
+                  Count how many errands you run for it.</>
               )}
             </p>
             <HarnessGame locale={l} />
@@ -110,17 +115,17 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="concept" style={{ background: "var(--bg2)" }}>
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第二幕 · 处方" : "ACT 2 · THE PRESCRIPTION"}</div>
+            <div className="act-tag">{zh ? "第二幕 · 一个魔法开关 ✨" : "ACT 2 · ONE MAGIC SWITCH ✨"}</div>
             <h2>
               {zh ? <>把「你」换成 <code style={{ fontSize: ".85em" }}>while True</code></> : <>Replace &quot;you&quot; with <code style={{ fontSize: ".85em" }}>while True</code></>}
             </h2>
             <p className="lede">
               {zh ? (
-                <>刚才你做的所有事——看模型要不要执行、跑命令、贴结果——没有一步需要智能，全是体力活。
-                  体力活就该交给代码。整个循环只盯<strong>一个信号</strong>：</>
+                <>刚才你做的所有事——看它要不要执行、跑命令、贴结果——没有一步需要动脑子，全是跑腿。
+                  跑腿就该交给代码。这个循环只盯<strong>一个信号</strong>：</>
               ) : (
-                <>Everything you just did — checking whether the model wants something run, running it, pasting results — required zero intelligence. It was pure manual labor,
-                  and manual labor belongs to code. The whole loop watches <strong>one signal</strong>:</>
+                <>Everything you just did — checking whether it wants something run, running it, pasting results — needed zero brainpower. It was pure legwork,
+                  and legwork belongs to code. This loop watches just <strong>one signal</strong>:</>
               )}
             </p>
             <div className="panel" style={{ marginBottom: 36 }}>
@@ -135,24 +140,24 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
                 <tbody>
                   <tr>
                     <td><span className="badge tool">stop_reason == &quot;tool_use&quot;</span></td>
-                    <td>{zh ? "模型举手：「我要用工具」🙋" : "The model raises a hand: “I need a tool” 🙋"}</td>
-                    <td>{zh ? <>执行 → 喂回 → <b style={{ color: "var(--green)" }}>继续跳</b></> : <>execute → feed back → <b style={{ color: "var(--green)" }}>keep beating</b></>}</td>
+                    <td>{zh ? "小 Agent 举手：「我要用工具」🙋" : "The baby raises a hand: “I need a tool” 🙋"}</td>
+                    <td>{zh ? <>执行 → 喂回 → <b style={{ color: "var(--green)" }}>再蹦一下 💓</b></> : <>execute → feed back → <b style={{ color: "var(--green)" }}>beat once more 💓</b></>}</td>
                   </tr>
                   <tr>
                     <td><span className="badge end">stop_reason != &quot;tool_use&quot;</span></td>
-                    <td>{zh ? "模型说：「我做完了」😌" : "The model says: “I'm done” 😌"}</td>
-                    <td><b style={{ color: "var(--red)" }}>{zh ? "心跳停止（正常下班）" : "flatline (a healthy one)"}</b></td>
+                    <td>{zh ? "小 Agent 说：「我做完啦」😴" : "The baby says: “I'm done” 😴"}</td>
+                    <td><b style={{ color: "var(--red)" }}>{zh ? "安心睡觉（循环退出）" : "off for a nap (loop exits)"}</b></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="lede" style={{ marginBottom: 0 }}>
               {zh ? (
-                <>分工从此清晰：<strong>模型负责决策</strong>（下一步干什么、要不要收工），<strong>循环负责供血</strong>（执行、喂回、再来一圈）。
-                  循环本身没有任何智能——但没有它，再聪明的模型也只是一段不会动的文字。</>
+                <>分工从此清晰：<strong>模型负责动脑</strong>（下一步干什么、要不要睡觉），<strong>循环负责跑腿</strong>（执行、喂回、再来一圈）。
+                  循环本身一点都不聪明——但没有它，再聪明的脑袋也只是一段不会动的文字。</>
               ) : (
-                <>The division of labor is now clean: <strong>the model decides</strong> (what next, when to stop) and <strong>the loop pumps blood</strong> (execute, feed back, go again).
-                  The loop holds zero intelligence — but without it, the smartest model is just text that can&apos;t move.</>
+                <>The division of labor is now clear: <strong>the model thinks</strong> (what next, when to nap) and <strong>the loop runs errands</strong> (execute, feed back, go again).
+                  The loop isn&apos;t clever at all — but without it, the smartest head is just text that can&apos;t move.</>
               )}
             </p>
           </Reveal>
@@ -163,14 +168,14 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="act3">
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第三幕 · 心电图" : "ACT 3 · THE ECG"}</div>
-            <h2>{zh ? "给循环做一次心电图 📈" : "Run an ECG on the Loop 📈"}</h2>
+            <div className="act-tag">{zh ? "第三幕 · 慢动作回放 🎬" : "ACT 3 · SLOW-MO REPLAY 🎬"}</div>
+            <h2>{zh ? "一帧一帧看它怎么转圈" : "Watch It Loop, Frame by Frame"}</h2>
             <p className="lede">
               {zh ? (
-                <>左边是 30 行的完整实现，右边是 <code>messages</code> 数组的实时心电。单步播放一次真实请求：
+                <>左边是 30 行的完整实现，右边是 <code>messages</code> 数组的实时变化。单步播放一次真实请求：
                   每一条消息的 JSON 都和真实 Anthropic API 一字不差。</>
               ) : (
-                <>On the left, the full 30-line implementation; on the right, a live ECG of the <code>messages</code>{" "}array.
+                <>On the left, the full 30-line implementation; on the right, the <code>messages</code>{" "}array changing live.
                   Step through one real request — every message&apos;s JSON matches the actual Anthropic API byte for byte.</>
               )}
             </p>
@@ -183,18 +188,18 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section style={{ background: "var(--bg2)" }}>
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第四幕 · 出院带药" : "ACT 4 · TAKE-HOME MEDICINE"}</div>
-            <h2>{zh ? "把这颗心脏装进你自己的机器 🔥" : "Install This Heart on Your Own Machine 🔥"}</h2>
+            <div className="act-tag">{zh ? "第四幕 · 带回家自己养 🏡" : "ACT 4 · TAKE ONE HOME 🏡"}</div>
+            <h2>{zh ? "把这只小 Agent 抱回你的机器 🐣" : "Bring This Baby Agent Home 🐣"}</h2>
             <p className="lede">
               {zh
-                ? "上面是模拟，这是真药。复制这 30 行，连上真模型、跑真命令："
-                : "The above was a simulation. This is the real medicine — copy these 30 lines, hook up a real model, run real commands:"}
+                ? "上面是模拟，这是真的。复制这 30 行，连上真模型、跑真命令，它就在你电脑里活过来了："
+                : "The above was a simulation; this is the real thing. Copy these 30 lines, hook up a real model, run real commands — and it comes alive on your machine:"}
             </p>
             <div className="try-box">
               <div className="warn">
                 ⚠️ {zh
-                  ? "它会执行模型生成的 shell 命令——请在一个临时目录里玩。真正的免疫系统（权限）第 3 章才长出来。"
-                  : "It executes model-generated shell commands — play inside a throwaway directory. The immune system (permissions) doesn't grow until Chapter 3."}
+                  ? "它会执行模型生成的 shell 命令——请在一个临时目录里玩。教它「哪些不能碰」（权限）是第 3 章的事。"
+                  : "It executes model-generated shell commands — play inside a throwaway directory. Teaching it “what not to touch” (permissions) comes in Chapter 3."}
               </div>
               <CopyPre text={AGENT_PY} label={zh ? "复制 agent.py" : "copy agent.py"} />
               <p style={{ color: "var(--dim)", fontSize: 14.5 }}>
@@ -219,26 +224,26 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
           <Reveal>
-            <h2 style={{ fontSize: 24 }}>{zh ? "出院考试 ✍️" : "Discharge Exam ✍️"}</h2>
+            <h2 style={{ fontSize: 24 }}>{zh ? "小测验 ✍️" : "Quick Quiz ✍️"}</h2>
             <div style={{ marginTop: 18 }}>
               <Quiz locale={l} />
             </div>
             <div className="next-card" style={{ marginTop: 50 }}>
-              <h3>{zh ? "下一章 · 双手 🔧" : "Next · The Hands 🔧"}</h3>
+              <h3>{zh ? "下一章 · 长出双手 🙌" : "Next · Grow Hands 🙌"}</h3>
               <p>
                 {zh
-                  ? "现在这颗心脏只长了一只手：bash。读文件要 cat，写文件要 echo >，找文件要 find——能用，但笨拙得像用筷子做外科手术。"
-                  : "Right now this heart has grown exactly one hand: bash. Reading means cat, writing means echo >, finding means find — workable, but as clumsy as surgery with chopsticks."}
+                  ? "现在小 Agent 只长了一根手指：bash。读文件要 cat，写文件要 echo >，找文件要 find——能用，但笨拙得像用一根筷子吃饭。"
+                  : "Right now the baby has just one finger: bash. Reading means cat, writing means echo >, finding means find — workable, but as clumsy as eating with a single chopstick."}
               </p>
               <p>
                 <b>
                   {zh
-                    ? "给它 5 根手指会发生什么？模型会同时用两只手吗？两只手会打架吗？"
-                    : "What happens when we give it five fingers? Will the model use both hands at once? Will the hands fight?"}
+                    ? "给它一双巧手会怎样？它会同时用好几根手指吗？几只手一起动会不会打架？"
+                    : "What happens when it grows nimble hands? Will it use several fingers at once? Will the hands fight when they move together?"}
                 </b>
               </p>
               <p style={{ fontSize: 13, fontFamily: "var(--mono)", color: "var(--dim)" }}>
-                {zh ? "孵化中 🥚" : "incubating 🥚"}
+                {zh ? "孵化中 🥚" : "in the egg 🥚"}
               </p>
             </div>
           </Reveal>

@@ -22,16 +22,19 @@ export default async function LocaleLayout({
   return (
     <>
       <LangSetter locale={l} />
+      <div className="bg-blobs" aria-hidden>
+        <span className="b1" /><span className="b2" /><span className="b3" /><span className="b4" /><span className="b5" />
+      </div>
       <header className="site-header">
         <Link href={`/${l}`} className="site-logo">
-          <span className="pulse" />
-          Agent Anatomy
+          <span className="egg">🐣</span>
+          Baby Agent
           <span style={{ color: "var(--dim)", fontWeight: 400, fontSize: 13 }}>
-            {l === "zh" ? "· 把 Claude Code 拆开看" : "· taking Claude Code apart"}
+            {l === "zh" ? "· 从一行循环开始，养大一个 AI" : "· raise an AI from a single loop"}
           </span>
         </Link>
         <div className="header-right">
-          <a className="gh" href="https://github.com/bayhax-wang/agent-anatomy" target="_blank" rel="noreferrer">
+          <a className="gh" href="https://github.com/bayhax-wang/baby-agent" target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
           <LocaleSwitcher locale={l} />
@@ -41,15 +44,15 @@ export default async function LocaleLayout({
       <footer className="site-footer">
         {l === "zh" ? (
           <>
-            开源于 <a href="https://github.com/bayhax-wang/agent-anatomy" target="_blank" rel="noreferrer">GitHub</a> · MIT ·
-            灵感与课程脉络致谢 <a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank" rel="noreferrer">shareAI-lab/learn-claude-code</a> ·
-            深层空间的证据来自对本机 Claude Code 安装包的一手核查
+            开源于 <a href="https://github.com/bayhax-wang/baby-agent" target="_blank" rel="noreferrer">GitHub</a> · MIT ·
+            课程脉络致谢 <a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank" rel="noreferrer">shareAI-lab/learn-claude-code</a> ·
+            「深层空间」的证据来自对本机 Claude Code 安装包的一手核查
           </>
         ) : (
           <>
-            Open source on <a href="https://github.com/bayhax-wang/agent-anatomy" target="_blank" rel="noreferrer">GitHub</a> · MIT ·
-            Course outline inspired by <a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank" rel="noreferrer">shareAI-lab/learn-claude-code</a> ·
-            Deep-space evidence verified first-hand against a local Claude Code install
+            Open source on <a href="https://github.com/bayhax-wang/baby-agent" target="_blank" rel="noreferrer">GitHub</a> · MIT ·
+            Course outline credit to <a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank" rel="noreferrer">shareAI-lab/learn-claude-code</a> ·
+            “Deep Space” evidence verified first-hand against a local Claude Code install
           </>
         )}
       </footer>

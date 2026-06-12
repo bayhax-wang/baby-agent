@@ -262,7 +262,7 @@ export default function HarnessGame({ locale }: { locale: Locale }) {
             ))}
           </div>
         </div>
-        <div className="panel">
+        <div className="panel screen">
           <div className="panel-head">
             <span className="dot r" /><span className="dot y" /><span className="dot g" />
             &nbsp;{t.termTitle}
