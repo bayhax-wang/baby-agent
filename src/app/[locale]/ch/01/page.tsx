@@ -3,7 +3,7 @@ import { isLocale, type Locale } from "@/lib/i18n";
 import Reveal from "@/components/Reveal";
 import CopyPre from "@/components/CopyPre";
 import HeroCircuit from "@/components/ch01/HeroCircuit";
-import HarnessGame from "@/components/ch01/HarnessGame";
+import CourierGame from "@/components/ch01/CourierGame";
 import LoopSimulator from "@/components/ch01/LoopSimulator";
 import DeepSpace from "@/components/ch01/DeepSpace";
 import Quiz from "@/components/ch01/Quiz";
@@ -97,20 +97,14 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="act1">
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第一幕 · 手忙脚乱 🙌" : "ACT 1 · ALL THUMBS 🙌"}</div>
-            <h2>{zh ? "你来当它的手脚" : "You Be Its Hands & Feet"}</h2>
+            <div className="act-tag">{zh ? "ACT 1 · 玩一下" : "ACT 1 · PLAY"}</div>
+            <h2>{zh ? "你来当它的快递员 📦" : "You Be Its Courier 📦"}</h2>
             <p className="lede">
-              {zh ? (
-                <>你对小 Agent 说：<strong>「创建一个 hello.py 并运行它」</strong>。它聪明地吐出第一条命令——然后就<strong>卡住了</strong>，它还没长出手。
-                  接下来每一步都得你帮忙：<strong>亲手在右边的终端里把命令敲出来</strong>（真的可以打字），再把输出搬回对话框。
-                  数数看你帮它跑了几趟腿。</>
-              ) : (
-                <>You tell the baby agent: <strong>&quot;create a hello.py and run it&quot;</strong>. It cleverly emits the first command — then <strong>freezes</strong>; it hasn&apos;t grown hands yet.
-                  From here every step is on you: <strong>type the command into the terminal on the right yourself</strong> (it really types), then carry the output back to the chat.
-                  Count how many errands you run for it.</>
-              )}
+              {zh
+                ? "LLM 想得出命令，但送不出对话框。这一单，由你来跑。"
+                : "The LLM can think up commands — but can't get them out of the chat. This delivery is on you."}
             </p>
-            <HarnessGame locale={l} />
+            <CourierGame locale={l} />
           </Reveal>
         </div>
       </section>
@@ -119,18 +113,14 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="concept" style={{ background: "var(--bg2, transparent)" }}>
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第二幕 · 一个魔法开关 ✨" : "ACT 2 · ONE MAGIC SWITCH ✨"}</div>
+            <div className="act-tag">{zh ? "ACT 2 · 原理" : "ACT 2 · THE IDEA"}</div>
             <h2>
               {zh ? <>把「你」换成 <code style={{ fontSize: ".85em" }}>while True</code></> : <>Replace &quot;you&quot; with <code style={{ fontSize: ".85em" }}>while True</code></>}
             </h2>
             <p className="lede">
-              {zh ? (
-                <>刚才你做的所有事——看它要不要执行、跑命令、贴结果——没有一步需要动脑子，全是跑腿。
-                  跑腿就该交给代码。这个循环只盯<strong>一个信号</strong>：</>
-              ) : (
-                <>Everything you just did — checking whether it wants something run, running it, pasting results — needed zero brainpower. It was pure legwork,
-                  and legwork belongs to code. This loop watches just <strong>one signal</strong>:</>
-              )}
+              {zh
+                ? "你刚才跑的腿，没有一步需要动脑。循环只看一个信号："
+                : "None of your errands needed a brain. The loop watches one signal:"}
             </p>
             <div className="panel" style={{ marginBottom: 36 }}>
               <table>
@@ -156,13 +146,9 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
               </table>
             </div>
             <p className="lede" style={{ marginBottom: 0 }}>
-              {zh ? (
-                <>分工从此清晰：<strong>模型负责动脑</strong>（下一步干什么、要不要睡觉），<strong>循环负责跑腿</strong>（执行、喂回、再来一圈）。
-                  循环本身一点都不聪明——但没有它，再聪明的脑袋也只是一段不会动的文字。</>
-              ) : (
-                <>The division of labor is now clear: <strong>the model thinks</strong> (what next, when to nap) and <strong>the loop runs errands</strong> (execute, feed back, go again).
-                  The loop isn&apos;t clever at all — but without it, the smartest head is just text that can&apos;t move.</>
-              )}
+              {zh
+                ? <><strong>模型负责动脑，循环负责跑腿。</strong>循环本身一点也不聪明——但没有它，再聪明的脑袋也只是一段不会动的文字。</>
+                : <><strong>The model thinks; the loop runs errands.</strong> The loop isn&apos;t clever at all — but without it, the smartest head is just text that can&apos;t move.</>}
             </p>
           </Reveal>
         </div>
@@ -172,16 +158,12 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section id="act3">
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第三幕 · 慢动作回放 🎬" : "ACT 3 · SLOW-MO REPLAY 🎬"}</div>
-            <h2>{zh ? "一帧一帧看它怎么转圈" : "Watch It Loop, Frame by Frame"}</h2>
+            <div className="act-tag">{zh ? "ACT 3 · 慢放" : "ACT 3 · SLOW-MO"}</div>
+            <h2>{zh ? "一帧一帧看它转圈 🎬" : "Frame by Frame 🎬"}</h2>
             <p className="lede">
-              {zh ? (
-                <>左边是 30 行的完整实现，右边是 <code>messages</code> 数组的实时变化。单步播放一次真实请求：
-                  每一条消息的 JSON 都和真实 Anthropic API 一字不差。</>
-              ) : (
-                <>On the left, the full 30-line implementation; on the right, the <code>messages</code>{" "}array changing live.
-                  Step through one real request — every message&apos;s JSON matches the actual Anthropic API byte for byte.</>
-              )}
+              {zh
+                ? <>左边 30 行真实代码，右边 <code>messages</code>{" "}数组——单步看一次请求怎么流过循环。</>
+                : <>30 real lines on the left, the <code>messages</code>{" "}array on the right — step through one request flowing around the loop.</>}
             </p>
             <LoopSimulator locale={l} />
           </Reveal>
@@ -192,12 +174,12 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       <section style={{ background: "var(--bg2, transparent)" }}>
         <div className="wrap">
           <Reveal>
-            <div className="act-tag">{zh ? "第四幕 · 带回家自己养 🏡" : "ACT 4 · TAKE ONE HOME 🏡"}</div>
-            <h2>{zh ? "把这只小 Agent 抱回你的机器 🐣" : "Bring This Baby Agent Home 🐣"}</h2>
+            <div className="act-tag">{zh ? "ACT 4 · 带回家" : "ACT 4 · TAKE IT HOME"}</div>
+            <h2>{zh ? "抱一只回你的机器 🐣" : "Bring One Home 🐣"}</h2>
             <p className="lede">
               {zh
-                ? "上面是模拟，这是真的。复制这 30 行，连上真模型、跑真命令，它就在你电脑里活过来了："
-                : "The above was a simulation; this is the real thing. Copy these 30 lines, hook up a real model, run real commands — and it comes alive on your machine:"}
+                ? "上面是模拟，这是真的——复制 30 行，它就在你电脑里活了。"
+                : "That was a simulation. This is real — copy 30 lines and it lives on your machine."}
             </p>
             <div className="try-box">
               <div className="warn">
