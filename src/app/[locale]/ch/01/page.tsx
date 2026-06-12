@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n";
 import Reveal from "@/components/Reveal";
 import CopyPre from "@/components/CopyPre";
-import HeroLoop from "@/components/ch01/HeroLoop";
+import HeroCircuit from "@/components/ch01/HeroCircuit";
 import HarnessGame from "@/components/ch01/HarnessGame";
 import LoopSimulator from "@/components/ch01/LoopSimulator";
 import DeepSpace from "@/components/ch01/DeepSpace";
@@ -89,7 +89,7 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
 
         {/* full-width continuous pipeline animation */}
         <div className="hero-stage">
-          <HeroLoop locale={l} />
+          <HeroCircuit locale={l} />
         </div>
       </section>
 
