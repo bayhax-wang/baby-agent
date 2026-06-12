@@ -22,15 +22,12 @@ export default async function LocaleLayout({
   return (
     <>
       <LangSetter locale={l} />
-      <div className="bg-blobs" aria-hidden>
-        <span className="b1" /><span className="b2" /><span className="b3" /><span className="b4" /><span className="b5" />
-      </div>
       <header className="site-header">
         <Link href={`/${l}`} className="site-logo">
-          <span className="egg">🐣</span>
+          <span className="logo-mark">🐣</span>
           Baby Agent
-          <span style={{ color: "var(--dim)", fontWeight: 400, fontSize: 13 }}>
-            {l === "zh" ? "· 从一行循环开始，养大一个 AI" : "· raise an AI from a single loop"}
+          <span className="logo-sub">
+            {l === "zh" ? "· 从一行循环养大一个 AI" : "· raise an AI from a single loop"}
           </span>
         </Link>
         <div className="header-right">

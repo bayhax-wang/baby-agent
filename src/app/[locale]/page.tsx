@@ -35,19 +35,19 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main>
       <div className="home-hero">
         <div className="wrap">
-          <div className="act-tag" style={{ letterSpacing: 4 }}>BABY AGENT 🐣</div>
-          <h1 className="hero-title" style={{ margin: "0 auto", maxWidth: 840 }}>
-            {zh ? "别只是读 Claude Code，亲手把它从一行循环养大" : "Don't just read Claude Code — raise it from a single loop, by hand"}
+          <div className="act-tag">BABY AGENT · 20 CHAPTERS</div>
+          <h1 className="hero-title" style={{ maxWidth: 820 }}>
+            {zh ? <>别只是读 Claude Code<br />亲手从一行循环把它养大</> : <>Don&apos;t just read Claude Code<br />raise it from a single loop, by hand</>}
           </h1>
-          <p className="lede" style={{ margin: "24px auto 0", textAlign: "center" }}>
+          <p className="lede">
             {zh ? (
-              <>每一章，小 Agent 学会一项新本领。你会得到：一个<b>能玩的小游戏</b> + 一段<b>能跑的最小代码</b> + 一扇通往真实源码的<b>「深层空间」</b>。</>
+              <>每一章，小 Agent 学会一项新本领。你会得到：一个<b>能玩的交互装置</b> + 一段<b>能跑的最小代码</b> + 一扇通往真实源码的<b>「深层空间」</b>。</>
             ) : (
-              <>Each chapter, the baby agent learns one new ability. You get: a <b>playable mini-game</b> + a <b>minimal runnable implementation</b> + a portal into the real code, the <b>&quot;Deep Space&quot;</b>.</>
+              <>Each chapter, the baby agent learns one new ability. You get: a <b>playable interaction</b> + a <b>minimal runnable implementation</b> + a portal into real deployed code — the <b>&quot;Deep Space&quot;</b>.</>
             )}
           </p>
-          <Link href={`/${l}/ch/01`} className="hero-cta" style={{ marginTop: 32 }}>
-            {zh ? "从第 1 章「苏醒」开始 🐣 →" : "Start with Chapter 1: Wake Up 🐣 →"}
+          <Link href={`/${l}/ch/01`} className="hero-cta">
+            {zh ? "从第 1 章「苏醒」开始 →" : "Start with Chapter 1: Wake Up →"}
           </Link>
         </div>
       </div>

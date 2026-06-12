@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n";
 import Reveal from "@/components/Reveal";
 import CopyPre from "@/components/CopyPre";
-import Hero3D from "@/components/ch01/Hero3D";
+import HeroLoop from "@/components/ch01/HeroLoop";
 import HarnessGame from "@/components/ch01/HarnessGame";
 import LoopSimulator from "@/components/ch01/LoopSimulator";
 import DeepSpace from "@/components/ch01/DeepSpace";
@@ -60,34 +60,38 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
 
   return (
     <main>
-      {/* ───── hero: split layout, text and animation never overlap ───── */}
-      <div className="hero">
-        <div className="hero-split">
-          <div>
-            <div className="hero-kicker">{zh ? "第 1 章 / 共 20 章 · 苏醒" : "CHAPTER 1 / 20 · WAKING UP"}</div>
-            <h1 className="hero-title">
-              {zh ? <>苏醒 🐣<br />给它一次心跳</> : <>Wake Up 🐣<br />Give It a Heartbeat</>}
-            </h1>
-            <p className="hero-sub">
-              {zh ? (
-                <>刚破壳的小 Agent 只是个<b>会做梦的脑袋</b>：想得出命令，却动不了手、看不见结果。给它接上一个 <code>while True</code>——它就<b>睁眼活过来了</b>。</>
-              ) : (
-                <>A freshly hatched baby agent is just a <b>dreaming head</b>: it can think up commands but can&apos;t lift a finger or see what happens. Wire it to a <code>while True</code> — and it <b>opens its eyes</b>.</>
-              )}
-            </p>
-            <p className="hero-quote">{zh ? "// 聪明在模型里，生命在循环里 ✨" : "// the smarts live in the model; the life lives in the loop ✨"}</p>
+      {/* ───── hero: headline top + full-width pipeline animation bottom ───── */}
+      <section className="hero" style={{ padding: 0 }}>
+        <div className="hero-content">
+          <div className="hero-kicker">{zh ? "CH 01 / 20 · AGENT LOOP" : "CH 01 / 20 · AGENT LOOP"}</div>
+          <h1 className="hero-title">
+            {zh ? <>给它一次循环<br />它就活过来了</> : <>Give It One Loop<br />and It Comes Alive</>}
+          </h1>
+          <p className="hero-sub">
+            {zh ? (
+              <>小 Agent 刚破壳时只是个<b>会想但不会动的脑袋</b>。给它接上一个 <code>while True</code>——
+              它就能持续行动、看见结果、做下一个决策。<b>那个循环，就是这一章要建的东西。</b></>
+            ) : (
+              <>A baby agent starts as a <b>head that can think but not act</b>.
+              Wire it to a <code>while True</code> and it can act, see results, and decide what&apos;s next.
+              <b>That loop is what we build in this chapter.</b></>
+            )}
+          </p>
+          <div className="hero-actions">
             <a href="#act1" className="hero-cta">
-              {zh ? "先帮它当一回手脚 🙌 ↓" : "First, be its hands & feet 🙌 ↓"}
+              {zh ? "先体验没有循环的痛 →" : "Feel the pain without the loop →"}
+            </a>
+            <a href="#act3" className="hero-cta-ghost">
+              {zh ? "直接看模拟器" : "Jump to simulator"}
             </a>
           </div>
-          <div className="hero-canvas-wrap" style={{ position: "relative" }}>
-            <span className="hero-spark" style={{ left: "-6%", top: "8%", animationDelay: "0s" }}>✨</span>
-            <span className="hero-spark" style={{ right: "-4%", top: "70%", animationDelay: "-2s" }}>💫</span>
-            <span className="hero-spark" style={{ left: "8%", bottom: "-6%", animationDelay: "-3.5s" }}>⭐</span>
-            <Hero3D locale={l} />
-          </div>
         </div>
-      </div>
+
+        {/* full-width continuous pipeline animation */}
+        <div className="hero-stage">
+          <HeroLoop locale={l} />
+        </div>
+      </section>
 
       {/* ───── act 1: the game ───── */}
       <section id="act1">
@@ -112,7 +116,7 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ───── act 2: the concept ───── */}
-      <section id="concept" style={{ background: "var(--bg2)" }}>
+      <section id="concept" style={{ background: "var(--bg2, transparent)" }}>
         <div className="wrap">
           <Reveal>
             <div className="act-tag">{zh ? "第二幕 · 一个魔法开关 ✨" : "ACT 2 · ONE MAGIC SWITCH ✨"}</div>
@@ -185,7 +189,7 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ───── act 4: build it ───── */}
-      <section style={{ background: "var(--bg2)" }}>
+      <section style={{ background: "var(--bg2, transparent)" }}>
         <div className="wrap">
           <Reveal>
             <div className="act-tag">{zh ? "第四幕 · 带回家自己养 🏡" : "ACT 4 · TAKE ONE HOME 🏡"}</div>
