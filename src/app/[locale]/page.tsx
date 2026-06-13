@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n";
+import Reveal from "@/components/Reveal";
 
 const CHAPTERS: { emoji: string; zh: [string, string]; en: [string, string] }[] = [
   { emoji: "🐣", zh: ["苏醒 · Agent Loop", "给它一次心跳，蛋就破壳了"], en: ["Wake Up · Agent Loop", "One heartbeat and the egg hatches"] },
@@ -60,26 +61,29 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               ? "一只 AI 编码 Agent 从破壳到毕业的全过程。第 1 章已开放，其余正在孵化。"
               : "A coding agent's whole journey, from hatching to graduation. Chapter 1 is live; the rest are still in the egg."}
           </p>
-          <div className="chapter-grid">
-            {CHAPTERS.map((c, i) => {
-              const [title, desc] = c[l];
-              const no = String(i + 1).padStart(2, "0");
-              return i === 0 ? (
-                <Link key={no} href={`/${l}/ch/01`} className="ch-card live">
-                  <span className="live-pill">● LIVE</span>
-                  <div className="ch-no">{c.emoji} CH {no}</div>
-                  <h3>{title}</h3>
-                  <p>{desc}</p>
-                </Link>
-              ) : (
-                <div key={no} className="ch-card soon">
-                  <div className="ch-no">{c.emoji} CH {no}</div>
-                  <h3>{title}</h3>
-                  <p>{desc}{zh ? " · 孵化中 🥚" : " · in the egg 🥚"}</p>
-                </div>
-              );
-            })}
-          </div>
+          <Reveal>
+            <div className="chapter-grid">
+              {CHAPTERS.map((c, i) => {
+                const [title, desc] = c[l];
+                const no = String(i + 1).padStart(2, "0");
+                const delay = { transitionDelay: `${i * 35}ms` };
+                return i === 0 ? (
+                  <Link key={no} href={`/${l}/ch/01`} className="ch-card live" style={delay}>
+                    <span className="live-pill">● LIVE</span>
+                    <div className="ch-no">{c.emoji} CH {no}</div>
+                    <h3>{title}</h3>
+                    <p>{desc}</p>
+                  </Link>
+                ) : (
+                  <div key={no} className="ch-card soon" style={delay}>
+                    <div className="ch-no">{c.emoji} CH {no}</div>
+                    <h3>{title}</h3>
+                    <p>{desc}{zh ? " · 孵化中 🥚" : " · in the egg 🥚"}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </Reveal>
         </div>
       </section>
     </main>

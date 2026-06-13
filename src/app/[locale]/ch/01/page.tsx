@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n";
 import Reveal from "@/components/Reveal";
 import CopyPre from "@/components/CopyPre";
-import HeroCircuit from "@/components/ch01/HeroCircuit";
+import HeroStage3D from "@/components/ch01/HeroStage3D";
 import CourierGame from "@/components/ch01/CourierGame";
+import SignalSwitch from "@/components/ch01/SignalSwitch";
 import LoopSimulator from "@/components/ch01/LoopSimulator";
 import DeepSpace from "@/components/ch01/DeepSpace";
 import Quiz from "@/components/ch01/Quiz";
@@ -89,7 +90,7 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
 
         {/* full-width continuous pipeline animation */}
         <div className="hero-stage">
-          <HeroCircuit locale={l} />
+          <HeroStage3D locale={l} />
         </div>
       </section>
 
@@ -122,28 +123,8 @@ export default async function Ch01({ params }: { params: Promise<{ locale: strin
                 ? "你刚才跑的腿，没有一步需要动脑。循环只看一个信号："
                 : "None of your errands needed a brain. The loop watches one signal:"}
             </p>
-            <div className="panel" style={{ marginBottom: 36 }}>
-              <table>
-                <thead>
-                  <tr>
-                    <th>{zh ? "信号" : "SIGNAL"}</th>
-                    <th>{zh ? "含义" : "MEANING"}</th>
-                    <th>{zh ? "循环动作" : "LOOP ACTION"}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span className="badge tool">stop_reason == &quot;tool_use&quot;</span></td>
-                    <td>{zh ? "小 Agent 举手：「我要用工具」🙋" : "The baby raises a hand: “I need a tool” 🙋"}</td>
-                    <td>{zh ? <>执行 → 喂回 → <b style={{ color: "var(--green)" }}>再蹦一下 💓</b></> : <>execute → feed back → <b style={{ color: "var(--green)" }}>beat once more 💓</b></>}</td>
-                  </tr>
-                  <tr>
-                    <td><span className="badge end">stop_reason != &quot;tool_use&quot;</span></td>
-                    <td>{zh ? "小 Agent 说：「我做完啦」😴" : "The baby says: “I'm done” 😴"}</td>
-                    <td><b style={{ color: "var(--red)" }}>{zh ? "安心睡觉（循环退出）" : "off for a nap (loop exits)"}</b></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div style={{ marginBottom: 36 }}>
+              <SignalSwitch locale={l} />
             </div>
             <p className="lede" style={{ marginBottom: 0 }}>
               {zh
